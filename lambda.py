@@ -42,14 +42,15 @@ def lambda_handler(event, context):
     str_dt_now = dt_now.strftime('%Y-%m-%d')
     print(str_dt_now)
     p = Path(f"result/{str_dt_now}.tsv")
-    p.parent.mkdir(exist_ok=True, parents=True)
+    tmp_path = Path("/tmp") / p
+    tmp_path.parent.mkdir(exist_ok=True, parents=True)
 
-    with p.open('w') as f:
+    with tmp_path.open('w') as f:
         writer = csv.writer(f, delimiter='\t')
         for record in l:
             writer.writerow(record)
     key = str(p)
 
     obj = s3.Object(bucket, key)
-    obj.upload_file(str(p))
+    obj.upload_file(str(tmp_path))
     return
