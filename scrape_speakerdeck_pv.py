@@ -6,7 +6,7 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://speakerdeck.com/meow_noisy"
+url = "https://speakerdeck.com/SpeakerDeck_USER_ID_YOU_WANNA_GET"
 
 
 r = requests.get(url)
