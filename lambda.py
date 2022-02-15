@@ -25,7 +25,7 @@ def lambda_handler(event, context):
 
     container = soup.select(".container.py-md-4.py-3")[0]
     slides = container.select(
-        '.row.mb-4')[0].select(".col-12.col-md-6.col-lg-4.mb-5")
+        '.row.mb-4')[1].select(".col-12.col-md-6.col-lg-4.mb-5")
 
     l = []
     for slide in slides:
